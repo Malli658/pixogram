@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\directive",
+    "\\src\\app\\uploadmedia\\singleupload",
+    "\\src\\assets"
+  ],
+  "SelectedNode": "\\src\\app\\directive\\image-drag-directive.directive.ts",
+  "PreviewInSolutionExplorer": false
+}
