@@ -3,10 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\directive",
-    "\\src\\app\\uploadmedia\\singleupload",
-    "\\src\\assets"
+    "\\src\\app\\mymedia",
+    "\\src\\app\\mymedia\\commenter",
+    "\\src\\app\\mymedia\\comments",
+    "\\src\\app\\mymedia\\replay",
+    "\\src\\app\\service",
+    "\\src\\app\\user",
+    "\\src\\app\\user\\signup"
   ],
-  "SelectedNode": "\\src\\app\\directive\\image-drag-directive.directive.ts",
+  "SelectedNode": "\\src\\app\\mymedia\\media\\media.component.html",
   "PreviewInSolutionExplorer": false
 }

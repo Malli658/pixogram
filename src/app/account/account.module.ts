@@ -7,6 +7,7 @@ import { SearchComponent } from './search/search.component';
 import { AccountComponent } from './account.component';
 import { RouterModule } from '@angular/router';
 import { AccountroutingRoutingModule } from './accountrouting-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { AccountroutingRoutingModule } from './accountrouting-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    AccountroutingRoutingModule
+    AccountroutingRoutingModule,
+    FormsModule
   ]
 })
 export class AccountModule { }

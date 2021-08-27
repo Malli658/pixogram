@@ -7,7 +7,7 @@ import { UploadmediaComponent } from './uploadmedia.component';
 const routes: Routes = [
   {
     path: '', component: UploadmediaComponent, children: [
-      { path: '', component: SingleuploadComponent },
+      { path: 'single', component: SingleuploadComponent },
       { path: 'multiple', component: MultiuploadComponent }
     ]
   }

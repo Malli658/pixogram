@@ -1,10 +1,10 @@
 <div class="row mx-1">
   
     <div class="col-md-2 bg-light borders mt-2 mb-2 py-2 px-2">
-      <h4 class="text-center shadow rounded"> <small>Upload</small></h4>
+      <h4 class="text-center shadow rounded py-1 px-1"> <small>Upload</small></h4>
       <div class="list-group">
-        <a routerLink="single" class="list-group-item list-group-item-action active">Single Media</a>
-        <a routerLink="multiple" class="list-group-item list-group-item-action">Multi media</a>
+        <a routerLink="/upload/single" class="list-group-item list-group-item-action" [ngClass]="{active:singleMedia==='active'}" (click)="onSingle()">Single Media</a>
+        <a routerLink="/upload/multiple" class="list-group-item list-group-item-action" [ngClass]="{active:multipleMedia==='active'}" (click)="onMultiple()">Multi media</a>
       </div>
     </div>
   

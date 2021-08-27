@@ -1,0 +1,20 @@
+<h4 class="text-center text-info">Comments</h4>
+<div *ngFor="let comment of comments;let i=index;">
+
+  <div class="d-inline-flex p-3 bg-secondary text-white">
+    <div class="p-2">
+      <app-commenter [url]="comment._links.commenter.href"></app-commenter>
+      <textarea rows="3" cols="50" class="form-control my-2 mx-2" disabled>{{comment.comment}}</textarea>
+      <app-replay [url]="comment._links.replay.href"></app-replay>
+    </div>
+    <div class="p-2">
+      <div class="btn-group-vertical">
+        <button type="button" class="btn btn-primary">REPLY</button>
+        <button type="button" class="btn btn-primary">LIKE</button>
+        <button type="button" class="btn btn-primary">DISLIKE</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

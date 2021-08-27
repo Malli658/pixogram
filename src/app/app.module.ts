@@ -11,6 +11,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ImageDragDirectiveDirective } from './directive/image-drag-directive.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TagInputModule } from 'ngx-chips';
 
 
 
@@ -28,7 +30,10 @@ import { ImageDragDirectiveDirective } from './directive/image-drag-directive.di
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    TagInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

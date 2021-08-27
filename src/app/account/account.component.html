@@ -1,2 +1,18 @@
-<p>account works!</p>
-<router-outlet></router-outlet>
+<div class="row mx-1">
+
+  <div class="col-md-2 bg-light borders mt-2 mb-2 py-2 px-2">
+    <h4 class="text-center shadow rounded py-1 px-1"> <small>Account</small></h4>
+    <div class="list-group">
+      <a routerLink="newsfeed" class="list-group-item list-group-item-action active">NewsFeed</a>
+      <a routerLink="blocked_account" class="list-group-item list-group-item-action">Blocked Accounts</a>
+      <a routerLink="update" class="list-group-item list-group-item-action">Account Update</a>
+      <a routerLink="search" class="list-group-item list-group-item-action">Search</a>
+      <a routerLink="multiple" class="list-group-item list-group-item-action">Logout</a>
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <router-outlet> </router-outlet>
+  </div>
+
+</div>

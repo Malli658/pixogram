@@ -6,11 +6,10 @@ import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   {
-    path: '', component: MymediaComponent, children: [
-      { path: 'media', component: MediaComponent },
-      { path: 'update', component: UpdateComponent }
-    ]
-  }
+    path: '', component: MymediaComponent
+  },
+  { path: 'view/:id', component: MediaComponent },
+  { path: 'update/:id', component: UpdateComponent }
 ];
 
 @NgModule({

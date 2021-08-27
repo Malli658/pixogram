@@ -1,1 +1,33 @@
-<p>accountupdate works!</p>
+<div class="bg-light shadow-lg my-2 py-2 d-flex justify-content-center">
+  <div class="container w-50 border border-1">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+
+      <div class="form-group">
+        <label for="name">User Name:</label>
+        <input type="text" class="form-control" placeholder="Enter User Name" name="name" required ngModel #email="ngModel">
+        <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email(ex. xyz.@pqr.com)</span>
+      </div>
+      <button type="button" class="btn btn-primary my-1" (click)="onReset()">Check</button>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" placeholder="Enter email" name="email" email required ngModel #email="ngModel">
+        <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email(ex. xyz.@pqr.com)</span>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" required ngModel name="password">
+      </div>
+      <label for="genders">Gender:</label>
+      <div class="form-check form-check-inline my-2" *ngFor="let gen of genders">
+
+        <input type="radio" class="form-check-input" name="gender" [ngModel]="defualtGender" [value]="gen" required />
+        <label class="form-check-label">{{gen}}</label>
+
+      </div>
+      <div class="d-flex justify-content-center my-2">
+        <button type="submit" class="btn btn-primary px-2 mx-2" [disabled]="!f.valid">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>

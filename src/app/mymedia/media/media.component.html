@@ -1,1 +1,39 @@
-<p>media works!</p>
+<div class="row">
+  <h4 class="text-center bg-light">Midea Details</h4>
+    <div class="col-md-7 mx-2">
+      <i class='fas fa-user-alt' *ngIf="media.defualtProfile"></i><p>{{media.caption}}</p>
+      <div class="card" style="width:400px">
+        <img  class="card-img-top" [src]="media._links.mediafile.href" alt="Card image" *ngIf="media.type=='IMAGE'">
+        <video controls *ngIf="media.type=='VIDEO'">
+          <source type="video/mp4" [src]="media._links.mediafile.href" />
+        </video>
+        <div class="card-footer">
+          <i class='fas fa-thumbs-up' *ngIf="like" (click)="likeOrUnLike('remove','like',media.id)"></i>
+          <i class='far fa-thumbs-up' *ngIf="!like" (click)="likeOrUnLike('add','like',media.id)"></i>
+          <i class='fas fa-thumbs-down mx-3' *ngIf="unlike" (click)="likeOrUnLike('remove','unlike',media.id)"></i>
+          <i class='far fa-thumbs-down mx-3' *ngIf="!unlike" (click)="likeOrUnLike('add','unlike',media.id)"></i>
+          <i class='fas fa-user-alt ml-3' placement="top" ngbTooltip="Set This Pic as Profile Pics" (click)="setDefualtPic(media._links.mediafile.href)"></i>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class="d-inline-flex p-2 bg-secondary text-white mx-2" *ngFor="let e of media.effects">
+        <div class="p-2 bg-info">{{e}}</div>
+      </div>
+      
+      <textarea rows="4" cols="50" class="form-control my-2 mx-2" disabled>{{media.description}}</textarea>
+
+      <div class="d-inline-flex p-2 bg-secondary text-white mx-2" *ngFor="let tag of media.tags">
+        <div class="p-2 bg-info">{{tag}}</div>
+      </div>
+      <h4 class="my-2"><i class='fas fa-thumbs-up mx-2'>{{likesCount}}</i><i class='fas fa-thumbs-down mx-2'>{{unlikesCount}}</i><i class='fas fa-comment-alt mx-2'>{{media.noOfComments}}</i></h4>
+      <label class="mx-2">Comment:</label>
+      <textarea rows="4" cols="50" class="form-control mx-2" [(ngModel)]="comment"></textarea>
+      <button type="button" class="btn btn-primary my-2 mx-2" (click)="postCommnet(media.id)">Post</button>
+    
+      <app-comments [url]="media._links.comments.href"> </app-comments>
+
+      
+    </div>
+</div>

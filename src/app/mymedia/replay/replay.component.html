@@ -1,0 +1,10 @@
+<div *ngIf="comments.length !==0">
+  <p>REPLAY:</p>
+  <div *ngFor="let comment of comments;let i=index;">
+
+    <app-commenter [url]="comment._links.commenter.href"></app-commenter>
+    <p>{{comment.comment}} </p>
+    <app-replay [url]="comment._links.replay.href"></app-replay>
+
+  </div>
+</div>

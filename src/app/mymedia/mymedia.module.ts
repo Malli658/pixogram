@@ -5,6 +5,11 @@ import { UpdateComponent } from './update/update.component';
 import { RouterModule } from '@angular/router';
 import { MymediaroutingRoutingModule } from './mymediarouting-routing.module';
 import { MymediaComponent } from './mymedia.component';
+import { FormsModule } from '@angular/forms';
+import { CommentsComponent } from './comments/comments.component';
+import { CommenterComponent } from './commenter/commenter.component';
+import { ReplayComponent } from './replay/replay.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -12,12 +17,17 @@ import { MymediaComponent } from './mymedia.component';
   declarations: [
     MediaComponent,
     UpdateComponent,
-    MymediaComponent
+    MymediaComponent,
+    CommentsComponent,
+    CommenterComponent,
+    ReplayComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    MymediaroutingRoutingModule
+    MymediaroutingRoutingModule,
+    FormsModule,
+    NgbModule
   ]
 })
 export class MymediaModule { }

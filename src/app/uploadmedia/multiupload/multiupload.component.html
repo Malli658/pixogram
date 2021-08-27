@@ -1,47 +1,77 @@
+
 <div class="row">
   <h4 class="text-center bg-light mt-2 ml-2 mb-2 py-2 px-2 shadow rounded">New Media Page</h4>
-
-  <div class="col-md-7 shadow-lg bg-light">
+  <div class="shadow-lg bg-light">
     <div class="container  pt-2 mt-2">
-      <form action="/action_page.php">
-        <div class="form-group d-flex justify-content-around mr-2">
-          <label for="text">Browse:</label>
-          <div class="p-1"><input type="file" class="form-control"></div>
-          <div class="p-1"><button type="submit" class="btn btn-primary">Upload</button></div>
+      <form [formGroup]="mediaForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="medias"
+             *ngFor="let media of mediaFormGroups.controls; let i = index;">
+          <div [formGroupName]="i">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group d-flex justify-content-around mr-2">
+                  <label for="text">Browse:</label>
+                  <div class="p-1"><input type="file" class="form-control" (change)="onChange($event)"></div>
+                  <div class="p-1"><button type="button" class="btn btn-primary" (click)="onUpload(i)">Upload</button></div>
+                </div>
+                <div class="form-group">
+                  <label for="text">Title:</label>
+                  <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
+                </div>
+                <div class="form-group">
+                  <label for="text">Description:</label>
+                  <textarea id="description" placeholder="Enter Description" formControlName="description" rows="4" cols="50" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="text">Tags:</label>
+                  <tag-input id="tags"
+                             formControlName="tags"
+                             [editable]="true"
+                             placeholder="Enter Tags"
+                             secondaryPlaceholder="Enter Tags"
+                             [blinkIfDupe]="true" [modelAsStrings]="true">
+                  </tag-input>
+                </div>
+                <div class="form-group">
+                  <label for="text">Effects:</label>
+                  <tag-input id="effects"
+                             formControlName="effects"
+                             [editable]="true"
+                             placeholder="Enter Effects"
+                             secondaryPlaceholder="Enter Effects"
+                             [blinkIfDupe]="true" [modelAsStrings]="true">
+                  </tag-input>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <p class="text-info fw-bold">OR</p>
+              </div>
+
+              <div class="col-md-3 mx-2">
+                <div class="shadow-lg bg-light mx-2">
+                  <div class="container-fluid py-2 px-2">
+                    <div class="text-center" style="height: 200px;"
+                         appImageDragDirective
+                         (files)="filesDropped($event)">
+                      <p class="h5">Drop your file here</p>
+                    </div>
+                    <div>
+                      <div *ngFor="let file of uploadedFiles" class="border border-0 text-center h-100 w-100">
+                        <img [src]="file.url" style="width: 100px; height: 100px;" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-2 mb-3" />
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="text">Title:</label>
-          <input type="text" class="form-control" placeholder="Enter Title" id="title">
-        </div>
-        <div class="form-group">
-          <label for="text">Description:</label>
-          <textarea id="description" placeholder="Enter Description" name="description" rows="4" cols="50" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="text">Tags:</label>
-          <input type="text" class="form-control" placeholder="Enter Tags" id="tags">
-        </div>
-        <div class="form-group">
-          <label for="text">Effects:</label>
-          <input type="text" class="form-control" placeholder="Enter Effects" id="effects">
-        </div>
-        <button type="submit" class="btn btn-primary my-2">Submit</button>
+        
+        <button type="button" class="btn btn-primary my-2 mx-2" (click)="addMedia()"><i class='fas fa-plus-square'></i></button>
+        <button type="submit" class="btn btn-primary my-2 mx-2">Submit</button>
+
       </form>
     </div>
   </div>
-  <div class="col-md-4 shadow-lg bg-light mx-2">
-    <div class="container-fluid py-2 px-2">
-      <div class="text-center" style="height: 200px;"
-           appImageDragDirective
-           (files)="filesDropped($event)">
-        <p class="h5">Drop your file here</p>
-      </div>
-      <div>
-        <div *ngFor="let file of uploadedFiles" class="border border-0 text-center h-100 w-100">
-          <img [src]="file.url" style="width: 100px; height: 100px;" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
+ </div>
