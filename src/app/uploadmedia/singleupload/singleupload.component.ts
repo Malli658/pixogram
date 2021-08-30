@@ -15,11 +15,15 @@ export class SingleuploadComponent implements OnInit {
   file: File;
   fileAdded = false;
   media: Media = new Media();
-  mediaId = '';
+  mediaId='';
   mediaForm: FormGroup;
+  userId :string;
   constructor(private mediaSerive: MediaService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    let userId = sessionStorage.getItem('_userId');
+    if (userId)
+    this.userId = userId;
     this.mediaForm = this.formBuilder.group({
       tags: ['', Validators.required],
       title: ['', Validators.required],
@@ -40,11 +44,12 @@ export class SingleuploadComponent implements OnInit {
   }
 
   onUpload() {
-    console.log(this.file);
+    
     this.mediaSerive.uploadFile(this.file).subscribe((event: any) => {
       if (typeof (event) === 'object') {
         this.fileAdded = true;
         this.mediaId = event.mediaId;
+        console.log(this.mediaId);
       }
     });
   }
@@ -62,7 +67,7 @@ export class SingleuploadComponent implements OnInit {
     this.media.mediaDescription = this.mediaForm.value.description;
     this.media.mediaTitle = this.mediaForm.value.title;
     this.media.tags = Array.from(this.mediaForm.value.tags);
-    this.media.userId = 1;
+    this.media.userId = Number(this.userId);
     console.log(this.media);
     this.mediaSerive.uploadMedia(this.media).subscribe(data => {
       this.mediaForm.reset();

@@ -19,6 +19,13 @@ export class MymediaComponent implements OnInit {
   constructor(private mediaService: MediaService, private route: Router) { }
 
   ngOnInit(): void {
+    let userId = sessionStorage.getItem('_userId');
+    if (userId) {
+      this.user = userId;
+      this.owner = userId;
+    }
+     
+
     this.getMedias();
   }
 

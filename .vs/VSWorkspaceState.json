@@ -4,13 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\mymedia",
-    "\\src\\app\\mymedia\\commenter",
     "\\src\\app\\mymedia\\comments",
+    "\\src\\app\\mymedia\\media",
     "\\src\\app\\mymedia\\replay",
     "\\src\\app\\service",
     "\\src\\app\\user",
     "\\src\\app\\user\\signup"
   ],
-  "SelectedNode": "\\src\\app\\mymedia\\media\\media.component.html",
   "PreviewInSolutionExplorer": false
 }

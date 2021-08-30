@@ -12,7 +12,7 @@ export class MediaComponent implements OnInit {
   id: string;
   media: any;
   comment = '';
-  userId = 1;
+  userId :number;
   commentModel: Comment = new Comment();
   like = false;
   unlike = false;
@@ -25,6 +25,9 @@ export class MediaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let userId = sessionStorage.getItem('_userId');
+    if (userId)
+      this.userId = Number(userId);
     console.log("i am ng onIn it");
     this.mediaLoading();
   }
@@ -65,7 +68,11 @@ export class MediaComponent implements OnInit {
   }
 
   setDefualtPic(picUrl: string) {
-    console.log(picUrl);
+    this.mediaService.updateProfilePic(this.userId, picUrl).subscribe(resp => {
+      console.log(resp);
+    }, err => {
+      console.log(err);
+    });
   }
 
   likeOrUnLike(operation: string, type: string, mediaId: string) {

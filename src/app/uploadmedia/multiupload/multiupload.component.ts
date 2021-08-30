@@ -18,6 +18,7 @@ export class MultiuploadComponent implements OnInit {
   file: File;
   media: Media;
   mediasData = new Array<Media>();
+  userId: string;
 
   uploadedFiles: FileHandle[];
   constructor(private formBuilder: FormBuilder, private mediaSerive: MediaService, private route: Router) {
@@ -26,6 +27,9 @@ export class MultiuploadComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("ia ma ngonit");
+    let userId = sessionStorage.getItem('_userId');
+    if (userId)
+      this.userId = userId;
     this.mediaForm = this.formBuilder.group({
       medias: this.formBuilder.array([this.createMedia()])
     });
@@ -77,7 +81,7 @@ export class MultiuploadComponent implements OnInit {
       this.mediasData[i].mediaDescription = arrayControl.at(i).value.description;
       this.mediasData[i].tags = Array.from(arrayControl.at(i).value.tags);
       this.mediasData[i].effects = Array.from(arrayControl.at(i).value.effects);
-      this.mediasData[i].userId = 1;
+      this.mediasData[i].userId = Number(this.userId);
     }
     this.mediaSerive.uploadMedias(this.mediasData).subscribe(data => {
       console.log("success");
